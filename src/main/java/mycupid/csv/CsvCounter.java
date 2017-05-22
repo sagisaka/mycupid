@@ -21,8 +21,8 @@ public class CsvCounter {
 				set.getting(d);
 			}
 			br.close();
-			
-			
+
+
 			File file2 = new File("src/main/resources/output.csv");
 
 			if (file2.length() <= 0){

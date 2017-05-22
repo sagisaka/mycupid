@@ -10,7 +10,6 @@ import mycupid.delivery.Deliverd;
 public class Main {
 	public void run() throws IOException, ScriptException{
 		Deliverd del = new Deliverd();
-		System.out.println("x");
 		del.deliverd();
 	}
 	public static void main(String[] args) throws IOException, ScriptException{
