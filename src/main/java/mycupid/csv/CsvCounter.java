@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class CsvCounter {
-	public void counter(Double d) throws IOException{
+	public void counter(Double d,String file_output) throws IOException{
 		CsvSetup set = new CsvSetup();
 		while(d<=1.0){
 			File file = new File("src/main/resources/test.csv");
@@ -18,7 +18,7 @@ public class CsvCounter {
 			while((line = br.readLine()) != null){
 				String array[] = line.split(",");
 				set.setting(array);
-				set.getting(d);
+				//set.getting(file_output);
 			}
 			br.close();
 

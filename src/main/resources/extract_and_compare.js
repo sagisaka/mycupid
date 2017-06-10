@@ -42,24 +42,45 @@ comparisons.forEach(function(i){
 	// total++;
 	//比較しているクラスのバースマークを出力したい。
 //	fs.writer(csv, "aa");
-	fs.writer(csv, "" + i.left().className() + ",");
-	fs.writer(csv, "" + i.left().elementCount() + ",");
-	i.left().forEach(function(element){
-		fs.writer(csv, "" + element + " ");
-	});
-	//fs.print("" + "\n");
+//	fs.writer(csv, "" + i.left().className() + ",");
+//	fs.writer(csv, "" + i.left().elementCount() + ",");
+//	i.left().forEach(function(element){
+//	fs.writer(csv, "" + element + " ");
+//	});
+//	//fs.print("" + "\n");
 
-	fs.writer(csv, "" + ",");
-	fs.writer(csv, "" + i.right().className() + ",");
-	fs.writer(csv, "" + i.right().elementCount() + ",");
-	i.right().forEach(function(element){
-		fs.writer(csv, "" + element);
-	});
-	//fs.print("" + "\n");
+//	fs.writer(csv, "" + ",");
+//	fs.writer(csv, "" + i.right().className() + ",");
+//	fs.writer(csv, "" + i.right().elementCount() + ",");
+//	i.right().forEach(function(element){
+//	fs.writer(csv, "" + element);
+//	});
+//	//fs.print("" + "\n");
 
-	fs.writer(csv, "" + ",");
-	fs.writer(csv, "" +  i.similarity() + "\n");
-	//}
+//	fs.writer(csv, "" + ",");
+//	fs.writer(csv, "" +  i.similarity() + "\n");
+
+	if( i.left().elementCount() > 4 && i.right().elementCount() > 4){
+		//
+		fs.print("" + i.left().className() + ",");
+		fs.print("" + i.left().elementCount() + ",");
+		i.left().forEach(function(element){
+			fs.print("" + element + " ");
+		});
+		//fs.print("" + "\n");
+		fs.print("" + ",");
+		fs.print("" + i.right().className() + ",");
+		fs.print("" + i.right().elementCount() + ",");
+		i.right().forEach(function(element){
+			fs.print("" + element);
+		});
+		//fs.print("" + "\n");
+
+		fs.print("" + ",");
+		fs.print("" + i.similarity() + "\n");
+		fs.writer(csv, "" + "\n");
+	}
+
 });
 //fs.print("" + argv[2]);
 //fs.print("" + p + ",1.0," + one + "," + total + "," + one/total);
