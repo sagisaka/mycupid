@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import mycupid.Extractor.Judgment;
 
@@ -26,9 +27,9 @@ public class CsvSetup {
 		ent.setGroup_elements(array[5]);
 		ent.setSimilarity(Float.parseFloat(array[6]));
 	}
-	public void search(String file_output,int max_count,int low_count,double simirality) throws IOException{
+	public void search(String file_output,int average,int deviation) throws IOException{
 		Judgment judg = new Judgment();
-		if(judg.judgmentCsvExtract(ent.getTarget_count(),ent.getSimilarity(),max_count,low_count,simirality)){
+		if(judg.judgmentCsvExtract(ent.getTarget_count(),ent.getSimilarity(),average,deviation)){
 			FileWriter fw = new FileWriter(file_output, true); 
 			PrintWriter pw = new PrintWriter(new BufferedWriter(fw));
 			String put;
@@ -40,11 +41,24 @@ public class CsvSetup {
 			pw.close();
 		}
 	}
-	public void perfectSerach(String file_output,int max_count,int low_count,double simirality) throws IOException{
+	public void secondSearch(String file_output,List<Integer> answer) throws IOException{
 		Judgment judg = new Judgment();
-		int narrow=10;
-		if(judg.judgmentCsvExtract(ent.getTarget_count(),ent.getSimilarity(),max_count+narrow,low_count+narrow,simirality+(double)narrow/100)){
-			FileWriter fw = new FileWriter("src/main/resources/narrow.csv", true); 
+		if(judg.judgmentSecondCsvExtract(ent.getTarget_count(),ent.getSimilarity(),answer.get(6),answer.get(5),answer.get(4),answer.get(3),answer.get(2),answer.get(0),answer.get(1))){
+			FileWriter fw = new FileWriter(file_output, true); 
+			PrintWriter pw = new PrintWriter(new BufferedWriter(fw));
+			String put;
+			put =  ent.getTarget_name() + "," + ent.getTarget_count()
+			+ "," + ent.getTarget_elements() + "," + ent.getGroup_name()
+			+ "," + ent.getGroup_count() + "," + ent.getGroup_elements()
+			+ "," + ent.getSimilarity() + "\n";
+			pw.print(put);
+			pw.close();
+		}
+	}
+	public void thirdSearch(String file_output,List<Integer> answer) throws IOException{
+		Judgment judg = new Judgment();
+		if(judg.judgmentThirdCsvExtract(ent.getTarget_count(),ent.getSimilarity(),answer.get(6),answer.get(5),answer.get(4),answer.get(3),answer.get(2),answer.get(0),answer.get(1))){
+			FileWriter fw = new FileWriter(file_output, true); 
 			PrintWriter pw = new PrintWriter(new BufferedWriter(fw));
 			String put;
 			put =  ent.getTarget_name() + "," + ent.getTarget_count()
