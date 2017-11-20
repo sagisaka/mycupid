@@ -1,4 +1,4 @@
-package mycupid.csv;
+package mycupid.csv.entity;
 
 public class CsvEntity {
 	private String target_name;

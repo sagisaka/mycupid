@@ -1,24 +1,27 @@
 package mycupid.csv;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 
 public class CsvController {
-	public void outputCsv(List<Integer> answer,String file_name,String file_output,String file_output2,String file_output3) throws IOException{
+	public void outputCsv(String file_name,String file_output,String birthmark) throws IOException{
 		CsvSetup set = new CsvSetup();
 		File file = new File(file_name);
-
 		BufferedReader br = set.inputFile(file);
 		String line;
+		Integer count=0;
 		while((line = br.readLine()) != null){
 			String array[] = line.split(",");
-			set.setting(array);
-			set.search(file_output,answer.get(0),answer.get(1));
-			set.secondSearch(file_output2,answer);
-			set.thirdSearch(file_output3,answer);
+			count += set.search(array,file_output+"_"+birthmark+".csv",birthmark);
 		}
+		FileWriter fw = new FileWriter(file_output+"_count.csv", true); 
+		PrintWriter pw = new PrintWriter(new BufferedWriter(fw));
+		pw.println(birthmark +","+ count);
 		br.close();
+		pw.close();
 	}
 }

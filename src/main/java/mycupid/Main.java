@@ -6,7 +6,6 @@ import javax.script.ScriptException;
 
 import mycupid.delivery.Deliverd;
 
-@SuppressWarnings("restriction")
 public class Main {
 	public void run(String[] args) throws IOException, ScriptException{
 		Deliverd del = new Deliverd();

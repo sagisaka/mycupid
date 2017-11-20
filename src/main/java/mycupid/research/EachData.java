@@ -50,6 +50,26 @@ public class EachData {
 			return (target.get(target.size()/4*3) + target.get(target.size()/4*3 - 1)) / 2.0 ;
 		}
 	}
+	public double getTen(List<Integer> target){
+		Collections.sort(target);
+		Collections.reverse(target);
+		if(target.size() % 2 == 1){
+			return target.get(target.size()/10);
+		}
+		else{
+			return (target.get(target.size()/10) + target.get(target.size()/10 - 1)) / 2.0 ;
+		}
+	}
+	public double getHandled(List<Integer> target){
+		Collections.sort(target);
+		Collections.reverse(target);
+		if(target.size() % 2 == 1){
+			return target.get(target.size()/100);
+		}
+		else{
+			return (target.get(target.size()/100) + target.get(target.size()/100 - 1)) / 2.0 ;
+		}
+	}
 	public double getMax(List<Integer> target){
 		Collections.sort(target);
 		Collections.reverse(target);
